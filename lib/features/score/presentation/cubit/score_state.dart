@@ -80,10 +80,18 @@ class ScoreState extends Equatable {
     int newRaund1 = raund1;
     int newRaund2 = raund2;
 
-    if (raund == 1 && newRaund1 < 6) {
+    if (raund == 1 && newRaund1 < 7) {
       newRaund1 = newRaund1 + 1;
-    } else if (raund == 2 && newRaund2 < 6) {
+    } else if (raund == 2 && newRaund2 < 7) {
       newRaund2 = newRaund2 + 1;
+    }
+
+    if (newRaund1 == 7) {
+      newRaund1 = 0;
+    }
+
+    if (newRaund2 == 7) {
+      newRaund2 = 0;
     }
 
     return ScoreState(
