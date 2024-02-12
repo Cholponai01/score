@@ -25,10 +25,18 @@ class ScoreState extends Equatable {
     int newFirst = first;
     int newSecond = second;
 
-    if (player == 1 && newFirst < 35) {
+    if (player == 1 && newFirst < 36) {
       newFirst = newFirst + 1;
-    } else if (player == 2 && newSecond < 35) {
+    } else if (player == 2 && newSecond < 36) {
       newSecond = newSecond + 1;
+    }
+
+    if (newFirst == 36) {
+      newFirst = 0;
+    }
+
+    if (newSecond == 36) {
+      newSecond = 0;
     }
 
     return ScoreState(
