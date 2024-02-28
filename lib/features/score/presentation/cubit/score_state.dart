@@ -24,11 +24,25 @@ class ScoreState extends Equatable {
   ScoreState incrementScore(int player) {
     int newFirst = first;
     int newSecond = second;
+    int newRaund1 = raund1;
+    int newRaund2 = raund2;
 
     if (player == 1 && newFirst < 36) {
       newFirst = newFirst + 1;
+      if (newFirst == 35) {
+        newRaund1 = newRaund1 + 1;
+        if (newRaund1 == 7) {
+          newRaund1 = 0;
+        }
+      }
     } else if (player == 2 && newSecond < 36) {
       newSecond = newSecond + 1;
+      if (newSecond == 35) {
+        newRaund2 = newRaund2 + 1;
+        if (newRaund2 == 7) {
+          newRaund2 = 0;
+        }
+      }
     }
 
     if (newFirst == 36) {
@@ -42,8 +56,8 @@ class ScoreState extends Equatable {
     return ScoreState(
       first: newFirst,
       second: newSecond,
-      raund1: raund1,
-      raund2: raund2,
+      raund1: newRaund1,
+      raund2: newRaund2,
       imgBgr1: player == 1 ? true : false,
       imgBgr2: player == 2 ? true : false,
     );
