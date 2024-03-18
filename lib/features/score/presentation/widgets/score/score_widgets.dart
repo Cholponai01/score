@@ -59,8 +59,7 @@ class PlayerScoreWidget extends StatelessWidget {
                         color: AppColors.white,
                         size: constraints.maxHeight * 0.08,
                       ),
-                      onPressed: () =>
-                          context.read<ScoreCubit>().undoScore(player),
+                      onPressed: () => context.read<ScoreCubit>().undoScore(player),
                     ),
                   ],
                 );

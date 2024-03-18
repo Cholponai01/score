@@ -8,8 +8,7 @@ import 'service_locator.dart' as di;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft])
-      .then((_) async {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]).then((_) async {
     await di.init();
     runApp(
       const MyApp(),
