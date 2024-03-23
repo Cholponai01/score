@@ -1,4 +1,4 @@
-package com.cholponai.score
+package com.example.score
 
 import io.flutter.embedding.android.FlutterActivity
 

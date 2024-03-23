@@ -38,7 +38,8 @@ class PlayerScorePage extends StatelessWidget {
                     ),
                     child: BlocBuilder<ScoreCubit, ScoreState>(
                       builder: (context, state) {
-                        return buildScoreRow(context, state.raund1, state.raund2);
+                        return buildScoreRow(
+                            context, state.raund1, state.raund2);
                       },
                     ),
                   )),
