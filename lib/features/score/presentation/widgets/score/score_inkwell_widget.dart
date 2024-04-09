@@ -9,9 +9,9 @@ Widget buildScoreInkWell(BuildContext context, int score, int player) {
       return Text(
         "$score",
         style: TextStyle(
-          fontSize: constraints.maxHeight * 0.78,
-          fontFamily: 'IBMPlexSansArabic',
-        ),
+            fontSize: constraints.maxHeight * 0.78,
+            fontFamily: 'IBMPlexSansArabic',
+            color: Colors.black),
       );
     }),
   );

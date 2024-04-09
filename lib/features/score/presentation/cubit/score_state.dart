@@ -27,29 +27,29 @@ class ScoreState extends Equatable {
     int newRaund1 = raund1;
     int newRaund2 = raund2;
 
-    if (player == 1 && newFirst < 36) {
+    if (player == 1 && newFirst < 46) {
       newFirst = newFirst + 1;
-      if (newFirst == 35) {
-        newRaund1 = newRaund1 + 1;
-        if (newRaund1 == 7) {
-          newRaund1 = 0;
-        }
-      }
-    } else if (player == 2 && newSecond < 36) {
+      // if (newFirst == 45) {
+      //   newRaund1 = newRaund1 + 1;
+      //   if (newRaund1 == 7) {
+      //     newRaund1 = 0;
+      //   }
+      // }
+    } else if (player == 2 && newSecond < 46) {
       newSecond = newSecond + 1;
-      if (newSecond == 35) {
-        newRaund2 = newRaund2 + 1;
-        if (newRaund2 == 7) {
-          newRaund2 = 0;
-        }
-      }
+      // if (newSecond == 45) {
+      //   newRaund2 = newRaund2 + 1;
+      //   if (newRaund2 == 7) {
+      //     newRaund2 = 0;
+      //   }
+      // }
     }
 
-    if (newFirst == 36) {
+    if (newFirst == 46) {
       newFirst = 0;
     }
 
-    if (newSecond == 36) {
+    if (newSecond == 46) {
       newSecond = 0;
     }
 
@@ -76,11 +76,11 @@ class ScoreState extends Equatable {
     int newRaund1 = raund1;
     int newRaund2 = raund2;
 
-    if (raund1 == 1 && newRaund1 > 0) {
-      newRaund1 = newRaund1 - 1;
-    } else if (raund2 == 2 && newRaund2 > 0) {
-      newRaund2 = newRaund2 - 1;
-    }
+    // if (newRaund1 == 1 && newRaund1 > 0) {
+    //   newRaund1 = newRaund1 - 1;
+    // } else if (newRaund2 == 2 && newRaund2 > 0) {
+    //   newRaund2 = newRaund2 - 1;
+    // }
 
     return ScoreState(
       first: newFirst,

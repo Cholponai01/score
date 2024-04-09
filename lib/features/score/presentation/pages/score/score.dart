@@ -1,1 +1,1 @@
-export 'score_page.dart';
+export 'player_score_page.dart';

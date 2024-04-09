@@ -5,9 +5,11 @@ import 'package:score/features/score/presentation/cubit/score_cubit.dart';
 import 'package:score/features/score/presentation/cubit/score_state.dart';
 
 class PlayerScoreWidget extends StatelessWidget {
+  final String playerName;
   final int player;
 
-  const PlayerScoreWidget({required this.player, super.key});
+  const PlayerScoreWidget(
+      {super.key, required this.player, required this.playerName});
 
   @override
   Widget build(BuildContext context) {
@@ -38,31 +40,33 @@ class PlayerScoreWidget extends StatelessWidget {
             child: InkWell(
               onTap: () => context.read<ScoreCubit>().incrementScore(player),
               child: LayoutBuilder(builder: (context, constraints) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Player $player',
-                        style: TextStyle(
-                          fontSize: constraints.maxHeight * 0.07,
+                return SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(playerName,
+                          style: TextStyle(
+                            fontSize: constraints.maxHeight * 0.07,
+                            color: AppColors.white,
+                            fontFamily: 'IBMPlexSansArabic',
+                          )),
+                      Text('${state.getScores(player)}',
+                          style: TextStyle(
+                            fontSize: constraints.maxHeight * 0.5,
+                            color: AppColors.white,
+                            fontFamily: 'IBMPlexSansArabic',
+                          )),
+                      IconButton(
+                        icon: Icon(
+                          Icons.undo,
                           color: AppColors.white,
-                          fontFamily: 'IBMPlexSansArabic',
-                        )),
-                    Text('${state.getScores(player)}',
-                        style: TextStyle(
-                          fontSize: constraints.maxHeight * 0.5,
-                          color: AppColors.white,
-                          fontFamily: 'IBMPlexSansArabic',
-                        )),
-                    IconButton(
-                      icon: Icon(
-                        Icons.undo,
-                        color: AppColors.white,
-                        size: constraints.maxHeight * 0.08,
+                          size: constraints.maxHeight * 0.08,
+                        ),
+                        onPressed: () =>
+                            context.read<ScoreCubit>().undoScore(player),
                       ),
-                      onPressed: () =>
-                          context.read<ScoreCubit>().undoScore(player),
-                    ),
-                  ],
+                    ],
+                  ),
                 );
               }),
             ),
