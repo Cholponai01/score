@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:score/features/score/presentation/pages/pages.dart';
 
 class PlayerNameInputPage extends StatefulWidget {
