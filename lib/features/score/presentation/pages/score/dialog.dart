@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:score/features/score/presentation/pages/pages.dart';
+import 'package:score/features/score/presentation/pages/score/player_score_page.dart';
 
-class PlayerNameInputPage extends StatefulWidget {
-  const PlayerNameInputPage({super.key});
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
 
   @override
-  State<PlayerNameInputPage> createState() => _PlayerNameInputPageState();
+  State<MyWidget> createState() => _MyWidgetState();
 }
 
-class _PlayerNameInputPageState extends State<PlayerNameInputPage> {
+class _MyWidgetState extends State<MyWidget> {
   final TextEditingController _player1Controller = TextEditingController();
   final TextEditingController _player2Controller = TextEditingController();
 
@@ -26,6 +26,7 @@ class _PlayerNameInputPageState extends State<PlayerNameInputPage> {
           ),
         ),
       );
+      // Navigator.of(context).pop();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -38,13 +39,8 @@ class _PlayerNameInputPageState extends State<PlayerNameInputPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(0),
-        child: AppBar(),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
+    return AlertDialog(
+      content: Form(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,17 +50,17 @@ class _PlayerNameInputPageState extends State<PlayerNameInputPage> {
                 textCapitalization: TextCapitalization.characters,
                 controller: _player1Controller,
                 decoration: const InputDecoration(
-                    labelText: "1-команданын аты",
-                    labelStyle: TextStyle(color: Colors.red),
-                    hintText: "1-КОМАНДА"),
+                  labelText: "1-команданын аты",
+                  labelStyle: TextStyle(color: Colors.red),
+                ),
               ),
               TextFormField(
                 textCapitalization: TextCapitalization.characters,
                 controller: _player2Controller,
                 decoration: const InputDecoration(
-                    labelText: "2-команданын аты",
-                    labelStyle: TextStyle(color: Colors.blue),
-                    hintText: "2-КОМАНДА"),
+                  labelText: "2-команданын аты",
+                  labelStyle: TextStyle(color: Colors.blue),
+                ),
               ),
               const SizedBox(height: 20),
               GestureDetector(
@@ -74,23 +70,25 @@ class _PlayerNameInputPageState extends State<PlayerNameInputPage> {
                   height: 40,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [
-                            // Colors.cyan,
-                            Colors.blue,
-                            Colors.red,
-                          ],
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          Colors.cyan,
+                          Colors.blue,
+                          Colors.red,
+                        ],
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
                     child: Center(
                       child: Text(
                         "Start",
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 19,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                          fontSize: 19,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:score/features/score/presentation/cubit/score_cubit.dart';
-import 'package:score/features/score/presentation/pages/score/player_name_input_page.dart';
+import 'package:score/features/score/presentation/pages/score/player_score_page.dart';
 import 'package:score/service_locator.dart';
 import 'service_locator.dart' as di;
 
@@ -26,8 +26,19 @@ class MyApp extends StatelessWidget {
       providers: [BlocProvider(create: (_) => sl<ScoreCubit>())],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: PlayerNameInputPage(),
+        home: PlayerScorePage(
+          player1Name: 'TEAM 1',
+          player2Name: 'TEAM 2',
+        ),
       ),
     );
+
+
+
+
+
+
+
+    
   }
 }

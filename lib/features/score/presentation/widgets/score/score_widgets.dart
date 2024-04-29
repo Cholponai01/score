@@ -15,6 +15,8 @@ class PlayerScoreWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ScoreCubit, ScoreState>(
       builder: (context, state) {
+        // bool gameEnded = (player == 1 && state.first == 45 ||
+        //     player == 2 && state.second == 45);
         return Expanded(
           child: DecoratedBox(
             decoration: BoxDecoration(
@@ -40,30 +42,50 @@ class PlayerScoreWidget extends StatelessWidget {
             child: InkWell(
               onTap: () => context.read<ScoreCubit>().incrementScore(player),
               child: LayoutBuilder(builder: (context, constraints) {
-                return SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                return SizedBox(
+                  height: double.infinity,
+                  child: Stack(
+                    alignment: Alignment.center,
                     children: [
-                      Text(playerName,
-                          style: TextStyle(
-                            fontSize: constraints.maxHeight * 0.07,
-                            color: AppColors.white,
-                            fontFamily: 'IBMPlexSansArabic',
-                          )),
-                      Text('${state.getScores(player)}',
-                          style: TextStyle(
-                            fontSize: constraints.maxHeight * 0.5,
-                            color: AppColors.white,
-                            fontFamily: 'IBMPlexSansArabic',
-                          )),
-                      IconButton(
-                        icon: Icon(
-                          Icons.undo,
+                      Positioned(
+                        top: 10,
+                        child: Text(playerName,
+                            style: TextStyle(
+                              fontSize: constraints.maxHeight * 0.08,
+                              color: AppColors.white,
+                              fontFamily: 'IBMPlexSansArabic',
+                              fontWeight: FontWeight.w800,
+                            )),
+                      ),
+                      Text(
+                        "${state.getScores(player)}",
+                        style: TextStyle(
+                          fontSize: constraints.maxHeight * 0.5,
                           color: AppColors.white,
-                          size: constraints.maxHeight * 0.08,
+                          fontFamily: 'IBMPlexSansArabic',
                         ),
-                        onPressed: () =>
-                            context.read<ScoreCubit>().undoScore(player),
+                      ),
+                      // Visibility(
+                      //   visible: gameEnded,
+                      //   child: const Positioned(
+                      //     top: 30,
+                      //     child: Text(
+                      //       "WIN",
+                      //       style: TextStyle(fontSize: 30),
+                      //     ),
+                      //   ),
+                      // ),
+                      Positioned(
+                        bottom: 13,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.undo,
+                            color: AppColors.white,
+                            size: constraints.maxHeight * 0.12,
+                          ),
+                          onPressed: () =>
+                              context.read<ScoreCubit>().undoScore(player),
+                        ),
                       ),
                     ],
                   ),
