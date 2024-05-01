@@ -134,10 +134,11 @@ class _PlayerScorePageState extends State<PlayerScorePage> {
                       child: GestureDetector(
                         onTap: state.hasWon
                             ? () {
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => PlayerScorePage(
+                                      builder: (context) =>
+                                          const PlayerScorePage(
                                             player1Name: "",
                                             player2Name: '',
                                           )),
@@ -147,28 +148,53 @@ class _PlayerScorePageState extends State<PlayerScorePage> {
                         child: ClipRect(
                           child: BackdropFilter(
                             filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height,
-                              color: Colors.black.withOpacity(0.5),
-                              child: Center(
-                                child: Container(
-                                  padding: const EdgeInsets.all(16.0),
+                            child: SizedBox(
+                                width: 600,
+                                //  MediaQuery.of(context).size.width,
+                                height: 400,
+                                // MediaQuery.of(context).size.height,
+                                child: DecoratedBox(
                                   decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    color: Colors.black.withOpacity(0.6),
                                   ),
-                                  child: Text(
-                                    'WIN ${state.first}:${state.second}',
-                                    style: const TextStyle(
-                                      fontSize: 48.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 50, vertical: 80),
+                                    child: SizedBox(
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        child: DecoratedBox(
+                                          decoration: BoxDecoration(
+                                            color: const Color.fromARGB(
+                                                115, 255, 255, 255),
+                                            borderRadius:
+                                                BorderRadius.circular(18.0),
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const Text(
+                                                'WIN ',
+                                                style: TextStyle(
+                                                  fontSize: 50.0,
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              Text(
+                                                'TEAM1: ${state.first} & TEAM2: ${state.second}',
+                                                style: const TextStyle(
+                                                  fontSize: 46.0,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )),
                                   ),
-                                ),
-                              ),
-                            ),
+                                )),
                           ),
                         ),
                       ),

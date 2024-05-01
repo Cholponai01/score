@@ -19,4 +19,8 @@ class ScoreCubit extends Cubit<ScoreState> {
   void incrementRaund(int raund) {
     emit(state.incrementRaund(raund));
   }
+
+  void reset() {
+    resetScores();
+  }
 }
