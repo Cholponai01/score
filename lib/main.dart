@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: PlayerScorePage(
-          player1Name: 'TEAM 1',
-          player2Name: 'TEAM 2',
+          player1Name: 'TEAM1',
+          player2Name: 'TEAM2',
         ),
       ),
     );

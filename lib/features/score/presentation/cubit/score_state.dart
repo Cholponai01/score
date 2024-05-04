@@ -27,6 +27,10 @@ class ScoreState extends Equatable {
     return player == 1 ? first : second;
   }
 
+  int getWinningScore() {
+    return first > second ? first : second;
+  }
+
   ScoreState incrementScore(int player) {
     int newFirst = first;
     int newSecond = second;
@@ -67,15 +71,16 @@ class ScoreState extends Equatable {
     bool isWinning = (newFirst == 45 || newSecond == 45);
 
     return ScoreState(
-        first: newFirst,
-        second: newSecond,
-        raund1: newRaund1,
-        raund2: newRaund2,
-        imgBgr1: player == 1 ? true : false,
-        imgBgr2: player == 2 ? true : false,
-        gameEnded: gameEnded,
-        isWinning: isWinning,
-        hasWon: newHasWon);
+      first: newFirst,
+      second: newSecond,
+      raund1: newRaund1,
+      raund2: newRaund2,
+      imgBgr1: player == 1 ? true : false,
+      imgBgr2: player == 2 ? true : false,
+      gameEnded: gameEnded,
+      isWinning: isWinning,
+      hasWon: newHasWon,
+    );
   }
 
   ScoreState undoScore(int player) {
@@ -98,11 +103,12 @@ class ScoreState extends Equatable {
     // }
 
     return ScoreState(
-        first: newFirst,
-        second: newSecond,
-        raund1: newRaund1,
-        raund2: newRaund2,
-        gameEnded: gameEnded);
+      first: newFirst,
+      second: newSecond,
+      raund1: newRaund1,
+      raund2: newRaund2,
+      gameEnded: gameEnded,
+    );
   }
 
   ScoreState incrementRaund(int raund) {
@@ -124,16 +130,25 @@ class ScoreState extends Equatable {
     }
 
     return ScoreState(
-        first: first,
-        second: second,
-        raund1: newRaund1,
-        raund2: newRaund2,
-        imgBgr1: imgBgr1,
-        imgBgr2: imgBgr2,
-        gameEnded: gameEnded);
+      first: first,
+      second: second,
+      raund1: newRaund1,
+      raund2: newRaund2,
+      imgBgr1: imgBgr1,
+      imgBgr2: imgBgr2,
+      gameEnded: gameEnded,
+    );
   }
 
   @override
-  List<Object?> get props =>
-      [first, second, raund1, raund2, imgBgr1, imgBgr2, gameEnded, isWinning];
+  List<Object?> get props => [
+        first,
+        second,
+        raund1,
+        raund2,
+        imgBgr1,
+        imgBgr2,
+        gameEnded,
+        isWinning,
+      ];
 }

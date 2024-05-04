@@ -139,7 +139,7 @@ class _PlayerScorePageState extends State<PlayerScorePage> {
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           const PlayerScorePage(
-                                            player1Name: "",
+                                            player1Name: '',
                                             player2Name: '',
                                           )),
                                 );
@@ -147,52 +147,99 @@ class _PlayerScorePageState extends State<PlayerScorePage> {
                             : null,
                         child: ClipRect(
                           child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                            filter: ImageFilter.blur(sigmaX: 7.0, sigmaY: 7.0),
                             child: SizedBox(
-                                width: 600,
-                                //  MediaQuery.of(context).size.width,
-                                height: 400,
-                                // MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.9,
                                 child: DecoratedBox(
                                   decoration: BoxDecoration(
-                                    color: Colors.black.withOpacity(0.6),
+                                    color: Colors.black.withOpacity(0.7),
+                                    borderRadius: BorderRadius.circular(18.0),
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 50, vertical: 80),
-                                    child: SizedBox(
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        child: DecoratedBox(
-                                          decoration: BoxDecoration(
-                                            color: const Color.fromARGB(
-                                                115, 255, 255, 255),
-                                            borderRadius:
-                                                BorderRadius.circular(18.0),
-                                          ),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              const Text(
-                                                'WIN ',
-                                                style: TextStyle(
-                                                  fontSize: 50.0,
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        "🏆",
+                                        style: TextStyle(
+                                          fontSize: 98.0,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      RichText(
+                                          text: TextSpan(children: [
+                                        TextSpan(
+                                            text: '${widget.player1Name}: ',
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 37,
+                                                fontWeight: FontWeight.bold)),
+                                        TextSpan(
+                                            text: state.first.toString(),
+                                            style: const TextStyle(
+                                                color: Colors.red,
+                                                fontSize: 37,
+                                                fontWeight: FontWeight.bold)),
+                                        const TextSpan(
+                                            text: " - ",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 37,
+                                                fontWeight: FontWeight.bold)),
+                                        TextSpan(
+                                            text: '${widget.player2Name}: ',
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 37,
+                                                fontWeight: FontWeight.bold)),
+                                        TextSpan(
+                                            text: state.second.toString(),
+                                            style: const TextStyle(
+                                                color: Colors.blue,
+                                                fontSize: 37,
+                                                fontWeight: FontWeight.bold)),
+                                      ])),
+                                      RichText(
+                                        text: TextSpan(
+                                          children: [
+                                            const TextSpan(
+                                              text: 'Winner is: ',
+                                              style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    215, 255, 235, 59),
+                                                fontSize: 49,
+                                                fontWeight: FontWeight.bold,
                                               ),
-                                              Text(
-                                                'TEAM1: ${state.first} & TEAM2: ${state.second}',
-                                                style: const TextStyle(
-                                                  fontSize: 46.0,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                            ),
+                                            TextSpan(
+                                              text: state.first > state.second
+                                                  ? widget.player1Name
+                                                  : widget.player2Name,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 49,
+                                                fontWeight: FontWeight.bold,
                                               ),
-                                            ],
-                                          ),
-                                        )),
+                                            ),
+                                            TextSpan(
+                                              text:
+                                                  ' ${state.getWinningScore()}',
+                                              style: TextStyle(
+                                                color:
+                                                    state.first > state.second
+                                                        ? Colors.red
+                                                        : Colors.blue,
+                                                fontSize: 49,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 )),
                           ),
