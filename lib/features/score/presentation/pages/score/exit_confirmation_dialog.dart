@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:score/features/score/presentation/pages/score/player_name_input_page.dart';
 
 class MyExitCorfirmationDialog extends StatelessWidget {
   const MyExitCorfirmationDialog({super.key});
@@ -17,11 +18,12 @@ class MyExitCorfirmationDialog extends StatelessWidget {
           ),
           TextButton(
             child: const Text("Ооба"),
-            onPressed: () => Navigator.of(context).pop(true),
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         builder: (context) => const PlayerNameInputPage())),
+            onPressed: () =>
+                // Navigator.of(context).pop(true),
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const PlayerNameInputPage())),
           )
         ]);
   }

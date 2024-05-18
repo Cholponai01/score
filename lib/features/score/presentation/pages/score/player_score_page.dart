@@ -206,7 +206,7 @@ class _PlayerScorePageState extends State<PlayerScorePage> {
                                         text: TextSpan(
                                           children: [
                                             const TextSpan(
-                                              text: 'Winner is: ',
+                                              text: 'Жеңүүчү : ',
                                               style: TextStyle(
                                                 color: Color.fromARGB(
                                                     215, 255, 235, 59),

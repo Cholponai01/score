@@ -15,8 +15,6 @@ class PlayerScoreWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ScoreCubit, ScoreState>(
       builder: (context, state) {
-        // bool gameEnded = (player == 1 && state.first == 45 ||
-        //     player == 2 && state.second == 45);
         return Expanded(
           child: DecoratedBox(
             decoration: BoxDecoration(
@@ -65,16 +63,6 @@ class PlayerScoreWidget extends StatelessWidget {
                           fontFamily: 'IBMPlexSansArabic',
                         ),
                       ),
-                      // Visibility(
-                      //   visible: gameEnded,
-                      //   child: const Positioned(
-                      //     top: 30,
-                      //     child: Text(
-                      //       "WIN",
-                      //       style: TextStyle(fontSize: 30),
-                      //     ),
-                      //   ),
-                      // ),
                       Positioned(
                         bottom: 13,
                         child: IconButton(

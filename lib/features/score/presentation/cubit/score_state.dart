@@ -7,7 +7,6 @@ class ScoreState extends Equatable {
   final int raund2;
   final bool imgBgr1;
   final bool imgBgr2;
-  final bool gameEnded;
   final bool isWinning;
   final bool hasWon;
 
@@ -18,7 +17,6 @@ class ScoreState extends Equatable {
     this.raund2 = 0,
     this.imgBgr1 = false,
     this.imgBgr2 = false,
-    this.gameEnded = false,
     this.isWinning = false,
     this.hasWon = false,
   });
@@ -65,8 +63,8 @@ class ScoreState extends Equatable {
     //   newSecond = 0;
     // }
 
-    bool gameEnded =
-        (newFirst == 45 || newSecond == 45) && newFirst == 0 && newSecond == 0;
+    // bool gameEnded =
+    // (newFirst == 45 || newSecond == 45) && newFirst == 0 && newSecond == 0;
 
     bool isWinning = (newFirst == 45 || newSecond == 45);
 
@@ -77,7 +75,6 @@ class ScoreState extends Equatable {
       raund2: newRaund2,
       imgBgr1: player == 1 ? true : false,
       imgBgr2: player == 2 ? true : false,
-      gameEnded: gameEnded,
       isWinning: isWinning,
       hasWon: newHasWon,
     );
@@ -107,7 +104,6 @@ class ScoreState extends Equatable {
       second: newSecond,
       raund1: newRaund1,
       raund2: newRaund2,
-      gameEnded: gameEnded,
     );
   }
 
@@ -136,7 +132,6 @@ class ScoreState extends Equatable {
       raund2: newRaund2,
       imgBgr1: imgBgr1,
       imgBgr2: imgBgr2,
-      gameEnded: gameEnded,
     );
   }
 
@@ -148,7 +143,6 @@ class ScoreState extends Equatable {
         raund2,
         imgBgr1,
         imgBgr2,
-        gameEnded,
         isWinning,
       ];
 }
